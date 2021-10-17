@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+body {
+    background-color:#5b6574; 
+}
+/* ERROR */
+.error {
+    padding: 10px;
+    border: 1px solid #a94442; 
+    color: #a94442; 
+    background: #f2dede; 
+    font-size: 14px;
+}
+/* SUCCESS */
+.success {
+    padding: 10px;
+    border: 1px solid #3c763d; 
+    color: #3c763d; 
+    background: #f2dede; 
+    font-size: 14px;
+}
+.login {
+    width: 400px;
+    background-color: #fff;
+    margin: 100px auto;
+}
+.login h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form input[type="password"], .login form input[type="text"], .login form input[type="email"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+select {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+   margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+.login form input[type="submit"]:hover {
+  background-color: #2868c7;
+}
