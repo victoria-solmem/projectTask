@@ -41,13 +41,13 @@
                 while($row = $semesterResult->fetch_assoc()) {
                     ?>
                         <tr>
-                            <td><a href="student-update?<?php echo $row['semester_id'] ?>"><?php echo $row['name'] ?></a></td>
+                            <td><a href="semester-update.php?id=<?php echo $row['semester_id'] ?>"><?php echo $row['name'] ?></a></td>
                             <td><?php echo $row['name'] ?></td>
                             <td><?php echo date('M d Y',strtotime($row['created_at'])) ?></td>
                             <td>
                             <form method="POST">
                                 <input type="text" value="<?php echo $row['semester_id'] ?>" name="semester_id" hidden>
-                                <input type="submit" style="background-color: transparent; color:red; margin-top:-2px;" name="deleteStudent" value="Delete">                       
+                                <input type="submit" style="background-color: transparent; color:red; margin-top:-2px;" name="deleteSemester" value="Delete">                       
                             </form> 
                             </td>
                         </tr>

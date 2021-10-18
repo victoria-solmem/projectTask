@@ -11,10 +11,8 @@
         <header>Dashboard</header>
         <ul>
            <li><a href="student.php">Student</a></li>
-            <li><a href="unit-report.php">Unit</a></li>
-            <li><a href="unit.php">Unit Report</a></li>
+            <li><a href="unit.php">Unit</a></li>
             <li><a href="semester.php">Semester</a></li>
-            <li><a href="semester-report.php">Semester Report</a></li>
             <li><a href="grade.php">Grade</a></li>
             <li><a style="color:red;" href="index.php">Logout</a></li>
         </ul>

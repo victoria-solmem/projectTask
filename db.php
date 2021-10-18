@@ -10,7 +10,6 @@
         die("connection failed: ".mysqli_connect_error());
     }
 
-
     //USER LOGIN
     if(isset($_POST['UserLogin'])){
         $userEmail     = mysqli_real_escape_string($con, $_POST['userEmail']);
@@ -25,7 +24,6 @@
             array_push($errors,"Wrong email/password combination.");
         }
     }
-
     //ADD STUDENT
     if(isset($_POST['addStudent'])){
         $reg_number = mysqli_real_escape_string($con, $_POST['reg_number']);
@@ -51,8 +49,37 @@
             }  
         } 
     }
-
-
+    // DELETE STUDENT
+    if(isset($_POST['deleteStudent'])){
+        $user_id = mysqli_real_escape_string($con, $_POST['user_id']); 
+        // SELECT ALL GRADE USERS
+        $gradeQuery  = "SELECT * FROM grade WHERE user_id='$user_id'";
+        $gradeResult = mysqli_query($con, $gradeQuery);
+        while($grade = $gradeResult->fetch_assoc()) {
+           // DELETE GRADE USERS
+            $grade_users = "DELETE FROM grade WHERE user_id='$user_id'";
+            mysqli_query($con, $grade_users);
+        }
+        $userQuery  = "DELETE FROM user WHERE user_id='$user_id'";
+        $userResult = mysqli_query($con, $userQuery);
+        header('Location: student.php');
+    }
+    // UPDATE USER
+    if(isset($_POST['updateStudent'])){
+        $user_id    =  mysqli_real_escape_string($con, $_POST['user_id']);
+        $reg_number = mysqli_real_escape_string($con, $_POST['reg_number']);
+        $first_name = mysqli_real_escape_string($con, $_POST['first_name']);
+        $last_name  = mysqli_real_escape_string($con, $_POST['last_name']);
+        $email      = mysqli_real_escape_string($con, $_POST['email']);
+        $query      = "UPDATE user SET reg_number='$reg_number', first_name='$first_name', last_name='$last_name', email='$email' WHERE user_id='$user_id'";
+        $results    = mysqli_query($con, $query);
+        if ($results) {
+            $_SESSION['success'] = "Student updated successfully.";
+            header('Location: student.php');
+        } else {
+            array_push($errors, "Could update your profile");
+        }
+    }
     //ADD UNIT
     if(isset($_POST['addUnit'])){
         $unit_name = mysqli_real_escape_string($con, $_POST['unit_name']);
@@ -76,7 +103,35 @@
             }  
         } 
     }
-
+    // DELETE UNIT
+    if(isset($_POST['updateUnit'])){
+        $unit_id    =  mysqli_real_escape_string($con, $_POST['unit_id']);
+        $unit_name = mysqli_real_escape_string($con, $_POST['unit_name']);
+        $unit_code = mysqli_real_escape_string($con, $_POST['unit_code']);
+        $query      = "UPDATE unit SET unit_name='$unit_name', unit_code='$unit_code' WHERE unit_id='$unit_id'";
+        $results    = mysqli_query($con, $query);
+        if ($results) {
+            $_SESSION['success'] = "Unit updated successfully.";
+            header('Location: unit.php');
+        } else {
+            array_push($errors, "Could update your profile");
+        }
+    }
+    // DELETE UNIT
+    if(isset($_POST['deleteUnit'])){
+        $unit_id = mysqli_real_escape_string($con, $_POST['unit_id']); 
+        // SELECT ALL GRADE UNITS
+        $gradeQuery  = "SELECT * FROM grade WHERE unit_id='$unit_id'";
+        $gradeResult = mysqli_query($con, $gradeQuery);
+        while($grade = $gradeResult->fetch_assoc()) {
+           // DELETE GRADE UNITS
+            $grade_users = "DELETE FROM grade WHERE unit_id='$unit_id'";
+            mysqli_query($con, $grade_users);
+        }
+        $userQuery  = "DELETE FROM unit WHERE unit_id='$unit_id'";
+        $userResult = mysqli_query($con, $userQuery);
+        header('Location: unit.php');
+    }
     //ADD SEMESTER
     if(isset($_POST['addSemester'])){
         $name = mysqli_real_escape_string($con, $_POST['name']);
@@ -98,14 +153,41 @@
             }  
         } 
     }
-
-    //ADD SEMESTER
+    // UPDATE SEMESTER
+    if(isset($_POST['updateSemester'])){
+        $semester_id    =  mysqli_real_escape_string($con, $_POST['semester_id']);
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $year = mysqli_real_escape_string($con, $_POST['year']);
+        $query      = "UPDATE semester SET name='$name', year='$year' WHERE semester_id='$semester_id'";
+        $results    = mysqli_query($con, $query);
+        if ($results) {
+            $_SESSION['success'] = "Semester updated successfully.";
+            header('Location: semester.php');
+        } else {
+            array_push($errors, "Could update your profile");
+        }
+    }
+    // DELETE SEMESTER
+    if(isset($_POST['deleteSemester'])){
+        $semester_id = mysqli_real_escape_string($con, $_POST['semester_id']); 
+        // SELECT ALL GRADE SEMESTER
+        $semesterQuery  = "SELECT * FROM grade WHERE semester_id='$semester_id'";
+        $semesterResult = mysqli_query($con, $semesterQuery);
+        while($grade = $semesterResult->fetch_assoc()) {
+           // DELETE SEMESTER UNITS
+            $grade_users = "DELETE FROM grade WHERE semester_id='$semester_id'";
+            mysqli_query($con, $grade_users);
+        }
+        $userQuery  = "DELETE FROM semester WHERE semester_id='$semester_id'";
+        $userResult = mysqli_query($con, $userQuery);
+        header('Location: semester.php');
+    }
+    //ADD GRADE
     if(isset($_POST['addGrade'])){
         $semester_id = mysqli_real_escape_string($con, $_POST['semester_id']);
         $user_id     = mysqli_real_escape_string($con, $_POST['user_id']);
         $unit_id     = mysqli_real_escape_string($con, $_POST['unit_id']);
-        $cat_1       = mysqli_real_escape_string($con, $_POST['cat_1']);
-        $cat_2       = mysqli_real_escape_string($con, $_POST['cat_2']);
+        $cat         = mysqli_real_escape_string($con, $_POST['cat']);
         $exam        = mysqli_real_escape_string($con, $_POST['exam']);
         // CHECK IF USER AND SEMESTER AND UNIT ALREADY EXIST 
         $check_query = "SELECT * FROM grade WHERE semester_id='$semester_id' AND user_id='$user_id' AND unit_id='$unit_id'";
@@ -114,7 +196,7 @@
             array_push($errors, "This User with this semester and unit already exist. Please update it.");
         }
         if (count($errors) == 0) { 
-            $query  = "INSERT INTO grade (semester_id, user_id, cat_1, cat_2, exam, unit_id) VALUES('$semester_id', '$user_id', '$cat_1', '$cat_2', '$exam', '$unit_id')";
+            $query  = "INSERT INTO grade (semester_id, user_id, cat, exam, unit_id) VALUES('$semester_id', '$user_id', '$cat', '$exam', '$unit_id')";
             $result = mysqli_query($con, $query);
             if($result){
                 header('Location: grade.php');
@@ -123,6 +205,30 @@
                 array_push($errors,"error connection fail.");
             }  
         } 
+    }
+    // UPDDELETEATE GRADE
+    if(isset($_POST['updateGrade'])){
+        $grade_id    =  mysqli_real_escape_string($con, $_POST['grade_id']);
+        $semester_id = mysqli_real_escape_string($con, $_POST['semester_id']);
+        $user_id     = mysqli_real_escape_string($con, $_POST['user_id']);
+        $unit_id     = mysqli_real_escape_string($con, $_POST['unit_id']);
+        $cat         = mysqli_real_escape_string($con, $_POST['cat']);
+        $exam        = mysqli_real_escape_string($con, $_POST['exam']);
+        $query       = "UPDATE semester SET semester_id='$semester_id', user_id='$user_id', unit_id='$unit_id , cat='$cat , exam='$exam' WHERE grade_id='$grade_id'";
+        $results     = mysqli_query($con, $query);
+        if ($results) {
+            $_SESSION['success'] = "Grade updated successfully.";
+            header('Location: grade.php');
+        } else {
+            array_push($errors, "Could update");
+        }
+    }
+    // DELETE GRADE
+    if(isset($_POST['deleteGrade'])){
+        $grade_id = mysqli_real_escape_string($con, $_POST['grade_id']); 
+        $gradeQuery  = "DELETE FROM grade WHERE grade_id='$grade_id'";
+         mysqli_query($con, $gradeQuery);
+        header('Location: grade.php');
     }
 
 ?>

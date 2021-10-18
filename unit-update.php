@@ -1,11 +1,17 @@
 <?php 
 	require_once('db.php');
+    $unit_id = $_GET['id'];
+    $query   = "SELECT * FROM unit WHERE unit_id = '$unit_id' LIMIT 1";
+	$results = mysqli_query($con, $query);
+	if ($results) {
+		$unitData = $results->fetch_assoc();		
+    }
 ?>
   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Student-add</title>
+    <title>Unit-update</title>
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -13,7 +19,7 @@
 
     <section class="banner">
         <div class="banner-left">
-            Student-add
+            Unit Update
         </div>
     </section>
     <section>
@@ -23,27 +29,18 @@
                     <?php  include("errors.php"); ?><br>
                 </div>
 
+                <input type="text" hidden value="<?php echo $unitData['unit_id'] ?>" name="unit_id">
                 <div style="width: 100%;">
-                    <label>Registration Number</label>
-                    <input type="text" name="reg_number">
+                    <label>Unit Name</label>
+                    <input type="text" value="<?php echo $unitData['unit_name'] ?>" name="unit_name">
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
-                    <label>First Name</label>
-                    <input type="text" name="first_name">
-                </div><br><br><br><br><br>
-
-                <div style="width: 100%;">
-                    <label>Last Name</label>
-                    <input type="text" name="last_name">
-                </div><br><br><br><br><br>
-
-                <div style="width: 100%;">
-                    <label>Email</label>
-                    <input type="email" name="email">
+                    <label>Unit Code</label>
+                    <input type="text" value="<?php echo $unitData['unit_code'] ?>" name="unit_code">
                 </div><br><br><br><br><br>
                 
-                <input type="submit" value="Add Student" name="addStudent">            
+                <input type="submit" value="Update Unit" name="updateUnit">            
             </form>
         </div>
     </section>

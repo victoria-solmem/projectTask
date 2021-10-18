@@ -1,11 +1,17 @@
 <?php 
 	require_once('db.php');
+    $grade_id = $_GET['id'];
+    $query   = "SELECT * FROM grade WHERE grade_id = '$grade_id' LIMIT 1";
+	$results = mysqli_query($con, $query);
+	if ($results) {
+		$gradeData = $results->fetch_assoc();		
+    }
 ?>
   <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Grade-add</title>
+    <title>Grade-update</title>
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -13,7 +19,7 @@
 
     <section class="banner">
         <div class="banner-left">
-        Grade Add
+        Grade update
         </div>
     </section>
     <section>
@@ -22,7 +28,7 @@
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
-
+                <input type="text" hidden value="<?php echo $gradeData['grade_id'] ?>" name="grade_id">
                 <div style="width: 100%;">
                     <label>Semester</label>
                     <select name="semester_id">
@@ -73,15 +79,15 @@
 
                 <div style="width: 100%;">
                     <label>Cat</label>
-                    <input type="number" name="cat" min="0" max="30">
+                    <input type="number" value="<?php echo $gradeData['cat'] ?>" name="cat" min="0" max="30">
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Exam</label>
-                    <input type="number" name="exam" min="0" max="70">
+                    <input value="<?php echo $gradeData['exam'] ?>" type="number" name="exam" min="0" max="70">
                 </div><br><br><br><br><br>
                 
-                <input type="submit" value="Add Grade" name="addGrade">            
+                <input type="submit" value="Update Grade" name="updateGrade">            
             </form>
         </div>
     </section>

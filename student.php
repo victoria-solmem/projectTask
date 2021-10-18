@@ -43,7 +43,7 @@
                 while($row = $studentResult->fetch_assoc()) {
                     ?>
                         <tr>
-                            <td><a href="student-update?<?php echo $row['user_id'] ?>"><?php echo $row['reg_number'] ?></a></td>
+                            <td><a href="student-update.php?id=<?php echo $row['user_id'] ?>"><?php echo $row['reg_number'] ?></a></td>
                             <td><?php echo $row['first_name'] ?></td>
                             <td><?php echo $row['last_name'] ?></td>
                             <td><?php echo $row['email'] ?></td>

@@ -32,8 +32,7 @@
                 <th>Reg Number</th>
                 <th>Semester</th>
                 <th>Unit</th>
-                <th>Cat 1</th>
-                <th>Cat 2</th>
+                <th>Cat</th>
                 <th>Exam</th>
                 <th>Total Mark</th>
                 <th>Grade</th>
@@ -68,38 +67,37 @@
                     }
                     ?>
                         <tr>
-                            <td><a href="grade-update?<?php echo $row['grade_id'] ?>"><?php echo $userData['reg_number'] ?></a></td>
+                            <td><a href="grade-update.php?id=<?php echo $row['grade_id'] ?>"><?php echo $userData['reg_number'] ?></a></td>
                             <!-- <td><?php echo $userData['first_name'] ?></td>
                             <td><?php echo $userData['last_name'] ?></td> -->
                             <td><?php echo $semesterData['year'] ?> <?php echo $semesterData['name'] ?></td>
                             <td><?php echo $unitData['unit_code'] ?>: <?php echo $unitData['unit_name'] ?></td>
-                            <td><?php echo $row['cat_1'] ?></td>
-                            <td><?php echo $row['cat_2'] ?></td>
+                            <td><?php echo $row['cat'] ?></td>
                             <td><?php echo $row['exam'] ?></td>
-                            <td><?php echo $row['cat_1']+$row['cat_2']+$row['exam'] ?></td>
+                            <td><?php echo $row['cat']+$row['exam'] ?></td>
                             <td>
                                 <?php 
-                                    if(($row['cat_1']+$row['cat_2']+$row['exam']) < 40) {
+                                    if(($row['cat']+$row['exam']) < 40) {
                                         ?>
                                             <div style="color: red">F</div>
                                         <?php
-                                    } elseif (($row['cat_1']+$row['cat_2']+$row['exam']) < 50) {
+                                    } elseif (($row['cat']+$row['exam']) < 50) {
                                         ?>
                                             <div style="color: green">D</div>
                                         <?php
-                                    } elseif (($row['cat_1']+$row['cat_2']+$row['exam']) < 60) {
+                                    } elseif (($row['cat']+$row['exam']) < 60) {
                                         ?>
                                             <div style="color: green">C</div>
                                         <?php
-                                    } elseif (($row['cat_1']+$row['cat_2']+$row['exam']) < 70) {
+                                    } elseif (($row['cat']+$row['exam']) < 70) {
                                         ?>
                                             <div style="color: green">B</div>
                                         <?php
-                                    } elseif (($row['cat_1']+$row['cat_2']+$row['exam']) < 80) {
+                                    } elseif (($row['cat']+$row['exam']) < 80) {
                                         ?>
                                             <div style="color: green">A</div>
                                         <?php
-                                    } elseif (($row['cat_1']+$row['cat_2']+$row['exam']) < 100) {
+                                    } elseif (($row['cat']+$row['exam']) < 100) {
                                         ?>
                                             <div style="color: green">A+</div>
                                         <?php
@@ -110,7 +108,7 @@
                             <td>
                                 <form method="POST">
                                     <input type="text" hidden value="<?php echo $row['grade_id'] ?>" name="grade_id">
-                                    <input type="submit" style="background-color: transparent; color:red; margin-top:-2px;" name="deleteStudent" value="Delete">                       
+                                    <input type="submit" style="background-color: transparent; color:red; margin-top:-2px;" name="deleteGrade" value="Delete">                       
                                 </form> 
                             </td>
                         </tr>
