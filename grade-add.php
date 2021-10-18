@@ -1,7 +1,7 @@
 <?php 
 	require_once('db.php');
 ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -18,14 +18,14 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addGradeForm">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Semester</label>
-                    <select name="semester_id">
+                    <select name="semester_id" required>
                         <option value="">Select Semester</option>
                         <?php 
                             $semesterQuery   = "SELECT * FROM semester";
@@ -41,7 +41,7 @@
 
                 <div style="width: 100%;">
                     <label>User</label>
-                    <select name="user_id">
+                    <select name="user_id" required>
                         <option value="">Select User</option>
                         <?php 
                             $userQuery  = "SELECT * FROM user";
@@ -57,7 +57,7 @@
 
                 <div style="width: 100%;">
                     <label>Unit</label>
-                    <select name="unit_id">
+                    <select name="unit_id" required>
                         <option value="">Select Unit</option>
                         <?php 
                             $unitQuery  = "SELECT * FROM unit";
@@ -73,12 +73,12 @@
 
                 <div style="width: 100%;">
                     <label>Cat</label>
-                    <input type="number" name="cat" min="0" max="30">
+                    <input type="number" name="cat" min="0" max="30" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Exam</label>
-                    <input type="number" name="exam" min="0" max="70">
+                    <input type="number" name="exam" min="0" max="70" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Grade" name="addGrade">            

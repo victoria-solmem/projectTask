@@ -24,7 +24,7 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addStudentForm">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
@@ -32,12 +32,12 @@
                 <input type="text" hidden value="<?php echo $unitData['unit_id'] ?>" name="unit_id">
                 <div style="width: 100%;">
                     <label>Unit Name</label>
-                    <input type="text" value="<?php echo $unitData['unit_name'] ?>" name="unit_name">
+                    <input type="text" value="<?php echo $unitData['unit_name'] ?>" name="unit_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Unit Code</label>
-                    <input type="text" value="<?php echo $unitData['unit_code'] ?>" name="unit_code">
+                    <input type="text" value="<?php echo $unitData['unit_code'] ?>" name="unit_code" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Update Unit" name="updateUnit">            

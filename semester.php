@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <title>Semester</title>
     <link rel="stylesheet" href="css/dashboard.css">
-    
 </head>
 <body>
 <?php include('menu.php'); ?>
@@ -19,8 +18,7 @@
         </div>
     </section>
     <section>
-    <button class="btn"
-            style="float: right; right: 10px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+        <button class="btn add-button">
             <a href="semester-add.php" style="color: white;">
                 Add Semester</a>
         </button>

@@ -7,7 +7,7 @@
 		$userData = $results->fetch_assoc();		
     }
 ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addStudentForm" onsubmit="return addStudentValidation()">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
@@ -32,22 +32,22 @@
                 <input type="text" hidden value="<?php echo $userData['user_id'] ?>" name="user_id">
                 <div style="width: 100%;">
                     <label>Registration Number</label>
-                    <input type="text" value="<?php echo $userData['reg_number'] ?>" name="reg_number">
+                    <input type="text" value="<?php echo $userData['reg_number'] ?>" name="reg_number" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>First Name</label>
-                    <input type="text" value="<?php echo $userData['first_name'] ?>" name="first_name">
+                    <input type="text" value="<?php echo $userData['first_name'] ?>" name="first_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Last Name</label>
-                    <input type="text" value="<?php echo $userData['last_name'] ?>" name="last_name">
+                    <input type="text" value="<?php echo $userData['last_name'] ?>" name="last_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Email</label>
-                    <input type="email" value="<?php echo $userData['email'] ?>" name="email">
+                    <input type="email" value="<?php echo $userData['email'] ?>" name="email" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Update Student" name="updateStudent">            

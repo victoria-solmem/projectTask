@@ -1,7 +1,7 @@
 <?php 
 	require_once('db.php');
 ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -18,29 +18,29 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addStudentForm">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Registration Number</label>
-                    <input type="text" name="reg_number">
+                    <input type="text" name="reg_number" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>First Name</label>
-                    <input type="text" name="first_name">
+                    <input type="text" name="first_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Last Name</label>
-                    <input type="text" name="last_name">
+                    <input type="text" name="last_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Student" name="addStudent">            

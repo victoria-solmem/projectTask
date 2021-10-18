@@ -1,14 +1,16 @@
-
 <?php 
 	require_once('db.php');
+    $report_user = '';
+    if (isset($_POST['report'])) {
+        $report_user = mysqli_real_escape_string($con, $_POST['user_id']);
+	}
 ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>Grade</title>
     <link rel="stylesheet" href="css/dashboard.css">
-    
 </head>
 <body>
 <?php include('menu.php'); ?>
@@ -19,14 +21,32 @@
         </div>
     </section>
     <section>
-    <button class="btn"
-            style="float: right; right: 10px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+        <button class="btn add-button">
             <a href="grade-add.php" style="color: white;">
                 Add Grade</a>
+        </button>
+        <button class="btn" onclick="showHideFilter()" style="float: right; right: 120px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+            Pick User
         </button>
         <div>
             <?php  include("success.php"); ?><br>
         </div>
+        <!-- PICK USER FORM -->
+        <form id="filter" class="report" method="POST" name="monthlyForm">
+            <select name="user_id">
+                <option value="">Select User</option>
+                <?php 
+                    $userQuery  = "SELECT * FROM user";
+                    $userResult = mysqli_query($con, $userQuery);
+                    while($row = mysqli_fetch_assoc($userResult)) {
+                        ?>
+                            <option value="<?php echo $row['user_id'] ?>"><?php echo $row['reg_number'] ?></option>
+                        <?php
+                    }
+                ?>
+            </select>      
+            <input type="submit" value="See Report" name="report">
+        </form>
         <table id="customers">
             <tr>
                 <th>Reg Number</th>
@@ -41,7 +61,11 @@
             <tr>
             
             <?php
-                $gradeQuery  = "SELECT * FROM grade ORDER BY created_at DESC";
+                if($report_user) {
+                    $gradeQuery = "SELECT * FROM grade WHERE user_id='$report_user'";
+                } else {
+                    $gradeQuery = "SELECT * FROM grade ORDER BY created_at DESC";
+                }
                 $gradeResult = mysqli_query($con, $gradeQuery);
                 while($row = $gradeResult->fetch_assoc()) {
                     // GET USER DETAILS
@@ -115,9 +139,19 @@
                     <?php                    
                 }
             ?>
-
         </table>
     </section>
     <script src="js/dashboard-validation.js"></script>
+    <script>
+        // SHOW AND HIDE FILTER
+        function showHideFilter() {
+            var filter = document.getElementById("filter");
+            if(filter.style.display === "block") {
+                filter.style.display = "none";
+            } else {
+                filter.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>

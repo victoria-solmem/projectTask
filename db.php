@@ -63,6 +63,7 @@
         $userQuery  = "DELETE FROM user WHERE user_id='$user_id'";
         $userResult = mysqli_query($con, $userQuery);
         header('Location: student.php');
+        $_SESSION['success'] = "Student updated successfully.";
     }
     // UPDATE USER
     if(isset($_POST['updateStudent'])){
@@ -131,6 +132,7 @@
         $userQuery  = "DELETE FROM unit WHERE unit_id='$unit_id'";
         $userResult = mysqli_query($con, $userQuery);
         header('Location: unit.php');
+        $_SESSION['success'] = "Unit updated successfully.";
     }
     //ADD SEMESTER
     if(isset($_POST['addSemester'])){
@@ -181,6 +183,7 @@
         $userQuery  = "DELETE FROM semester WHERE semester_id='$semester_id'";
         $userResult = mysqli_query($con, $userQuery);
         header('Location: semester.php');
+        $_SESSION['success'] = "Semester updated successfully.";
     }
     //ADD GRADE
     if(isset($_POST['addGrade'])){
@@ -206,7 +209,7 @@
             }  
         } 
     }
-    // UPDDELETEATE GRADE
+    // UPDATE GRADE
     if(isset($_POST['updateGrade'])){
         $grade_id    =  mysqli_real_escape_string($con, $_POST['grade_id']);
         $semester_id = mysqli_real_escape_string($con, $_POST['semester_id']);
@@ -214,7 +217,7 @@
         $unit_id     = mysqli_real_escape_string($con, $_POST['unit_id']);
         $cat         = mysqli_real_escape_string($con, $_POST['cat']);
         $exam        = mysqli_real_escape_string($con, $_POST['exam']);
-        $query       = "UPDATE semester SET semester_id='$semester_id', user_id='$user_id', unit_id='$unit_id , cat='$cat , exam='$exam' WHERE grade_id='$grade_id'";
+        $query       = "UPDATE grade SET semester_id='$semester_id', user_id='$user_id', cat='$cat', exam='$exam', unit_id='$unit_id' WHERE grade_id='$grade_id'";
         $results     = mysqli_query($con, $query);
         if ($results) {
             $_SESSION['success'] = "Grade updated successfully.";
@@ -227,8 +230,9 @@
     if(isset($_POST['deleteGrade'])){
         $grade_id = mysqli_real_escape_string($con, $_POST['grade_id']); 
         $gradeQuery  = "DELETE FROM grade WHERE grade_id='$grade_id'";
-         mysqli_query($con, $gradeQuery);
+        mysqli_query($con, $gradeQuery);
         header('Location: grade.php');
+        $_SESSION['success'] = "Grade deleted successfully.";
     }
 
 ?>

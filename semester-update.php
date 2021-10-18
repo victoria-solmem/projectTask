@@ -24,7 +24,7 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addStudentForm">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
@@ -32,12 +32,12 @@
                 <input type="text" hidden value="<?php echo $semesterData['semester_id'] ?>" name="semester_id">
                 <div style="width: 100%;">
                     <label>Name</label>
-                    <input type="text" value="<?php echo $semesterData['name'] ?>" name="name">
+                    <input type="text" value="<?php echo $semesterData['name'] ?>" name="name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Year</label>
-                    <input type="number" value="<?php echo $semesterData['year'] ?>" name="year" min="2021" max="2021">
+                    <input type="number" value="<?php echo $semesterData['year'] ?>" name="year" min="2021" max="2021" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Update Semester" name="updateSemester">            

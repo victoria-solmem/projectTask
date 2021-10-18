@@ -1,14 +1,14 @@
 <input type="checkbox" id="check">
     <label for="check">
         <div id="btn">
-            <img src="images/icons/menu.svg" width="20px" height="20px" alt="">
+            <img src="images/icons/menu.svg" width="20px" height="20px">
         </div>
         <div id="cancel">
-            <img src="images/icons/close.svg" width="20px" height="20px" alt="">
+            <img src="images/icons/close.svg" width="20px" height="20px">
         </div>
     </label>
     <div class="sidebar">
-        <header>Dashboard</header>
+        <header>Menu</header>
         <ul>
            <li><a href="student.php">Student</a></li>
             <li><a href="unit.php">Unit</a></li>

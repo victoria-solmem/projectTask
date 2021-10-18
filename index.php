@@ -4,27 +4,27 @@
 <html>
 <head>
 <title> Login || </title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/login.css">
 <body>
     <div class="login">
         <h1>Login</h1>
-        <form name="loginForm" method="POST" onsubmit="return loginValidation()">
-        <div>
-            <?php
-            include("errors.php");
-            ?><br>
-        </div>
-        <div>
-            <?php
-            include("success.php");
-            ?><br>
-        </div>
-        <div>
-            <input type="email" name="userEmail" id="userEmail" placeholder="Email Address">
-        </div>
+        <form method="POST">
+            <div>
+                <?php
+                include("errors.php");
+                ?><br>
+            </div>
+            <div>
+                <?php
+                include("success.php");
+                ?><br>
+            </div>
+            <div>
+                <input type="email" name="userEmail" placeholder="Email Address" required>
+            </div>
             
             <div>
-                <input type="password" name="userPassword" placeholder="Password" id="userPassword">
+                <input type="password" name="userPassword" placeholder="Password" required>
             </div>
 
             <div style="margin-left: 190px;"><a href="forgot-password.php">Forgot Password?</a></div>

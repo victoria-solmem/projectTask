@@ -19,8 +19,7 @@
         </div>
     </section>
     <section>
-    <button class="btn"
-            style="float: right; right: 10px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+        <button class="btn add-button">
             <a href="unit-add.php" style="color: white;">
                 Add Unit</a>
         </button>

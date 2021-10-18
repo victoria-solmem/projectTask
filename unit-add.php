@@ -18,19 +18,19 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST" name="addStudentForm" onsubmit="return addStudentValidation()">
+            <form method="POST">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Unit Name</label>
-                    <input type="text" name="unit_name">
+                    <input type="text" name="unit_name" required>
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Unit Code</label>
-                    <input type="text" name="unit_code">
+                    <input type="text" name="unit_code" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Unit" name="addUnit">            

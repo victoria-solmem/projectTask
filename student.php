@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <title>Student</title>
     <link rel="stylesheet" href="css/dashboard.css">
-    
 </head>
 <body>
 <?php include('menu.php'); ?>
@@ -19,8 +18,7 @@
         </div>
     </section>
     <section>
-    <button class="btn"
-            style="float: right; right: 10px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+        <button class="btn add-button">
             <a href="student-add.php" style="color: white;">
                 Add Student</a>
         </button>
@@ -58,7 +56,6 @@
                     <?php                    
                 }
             ?>
-
         </table>
     </section>
     <script src="js/dashboard-validation.js"></script>
