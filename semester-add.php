@@ -30,7 +30,7 @@
 
                 <div style="width: 100%;">
                     <label>Year</label>
-                    <input type="number" name="year" min="2021" max="2021" required>
+                    <input type="number" name="year" min="2018" max="2021" required>
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Semester" name="addSemester">            

@@ -3,7 +3,7 @@
     left: -250px;
     width: 250px;
     height: 100%;
-    background: #3274d6;
+    background: #545557;
 }
 .sidebar header{
     font-size: 22px;
@@ -97,7 +97,7 @@ label #cancel{
 }
 .login {
     width: 400px;
-    background-color: #fff;
+    background-color: rgb(112, 107, 107);
     margin: 100px auto;
 }
 .login form {

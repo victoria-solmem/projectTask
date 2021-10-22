@@ -121,7 +121,7 @@
                                         ?>
                                             <div style="color: green">A</div>
                                         <?php
-                                    } elseif (($row['cat']+$row['exam']) < 100) {
+                                    } elseif (($row['cat']+$row['exam']) <= 100) {
                                         ?>
                                             <div style="color: green">A+</div>
                                         <?php
