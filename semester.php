@@ -23,6 +23,9 @@
                 Add Semester</a>
         </button>
         <div>
+            <?php  include("errors.php"); ?><br>
+        </div>
+        <div>
             <?php  include("success.php"); ?><br>
         </div>
         <table id="customers">

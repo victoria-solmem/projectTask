@@ -19,12 +19,12 @@
 
     <section class="banner">
         <div class="banner-left">
-            Unit Update
+             Update Unit
         </div>
     </section>
     <section>
         <div class="login">
-            <form method="POST">
+        <form name="addUnitForm" method="POST" onsubmit="return addUnitValidation()" style=" background-color: white;">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
@@ -32,18 +32,18 @@
                 <input type="text" hidden value="<?php echo $unitData['unit_id'] ?>" name="unit_id">
                 <div style="width: 100%;">
                     <label>Unit Name</label>
-                    <input type="text" value="<?php echo $unitData['unit_name'] ?>" name="unit_name" required>
+                    <input type="text" value="<?php echo $unitData['unit_name'] ?>" name="unit_name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Unit Code</label>
-                    <input type="text" value="<?php echo $unitData['unit_code'] ?>" name="unit_code" required>
+                    <input type="text" value="<?php echo $unitData['unit_code'] ?>" name="unit_code" >
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Update Unit" name="updateUnit">            
             </form>
         </div>
     </section>
-    <script src="js/dashboard-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

@@ -18,25 +18,25 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST">
+        <form name="addSemesterForm" method="POST" onsubmit="return addSemesterValidation()" style=" background-color: white;">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Name</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Year</label>
-                    <input type="number" name="year" min="2018" max="2021" required>
+                    <input type="number" name="year" min="2018" max="2022" >
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Semester" name="addSemester">            
             </form>
         </div>
     </section>
-    <script src="js/dashboard-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

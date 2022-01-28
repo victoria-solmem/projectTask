@@ -8,7 +8,7 @@
 <body>
     <div class="login">
         <h1>Login</h1>
-        <form method="POST">
+        <form name="loginForm" method="POST" onsubmit="return loginValidation()">
             <div>
                 <?php
                 include("errors.php");
@@ -20,11 +20,11 @@
                 ?><br>
             </div>
             <div>
-                <input type="email" name="userEmail" placeholder="Email Address" required>
+                <input type="email" name="userEmail" placeholder="Email Address">
             </div>
             
             <div>
-                <input type="password" name="userPassword" placeholder="Password" required>
+                <input type="password" name="userPassword" placeholder="Password" >
             </div>
 
             <div style="margin-left: 190px;"><a href="forgot-password.php">Forgot Password?</a></div>

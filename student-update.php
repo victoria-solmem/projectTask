@@ -19,12 +19,12 @@
 
     <section class="banner">
         <div class="banner-left">
-            Student Update
+             Update Student
         </div>
     </section>
     <section>
         <div class="login">
-            <form method="POST">
+        <form name="addStudentForm" method="POST" onsubmit="return addStudentValidation()" style=" background-color: white;">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
@@ -32,28 +32,28 @@
                 <input type="text" hidden value="<?php echo $userData['user_id'] ?>" name="user_id">
                 <div style="width: 100%;">
                     <label>Registration Number</label>
-                    <input type="text" value="<?php echo $userData['reg_number'] ?>" name="reg_number" required>
+                    <input type="text" value="<?php echo $userData['reg_number'] ?>" name="reg_number" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>First Name</label>
-                    <input type="text" value="<?php echo $userData['first_name'] ?>" name="first_name" required>
+                    <input type="text" value="<?php echo $userData['first_name'] ?>" name="first_name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Last Name</label>
-                    <input type="text" value="<?php echo $userData['last_name'] ?>" name="last_name" required>
+                    <input type="text" value="<?php echo $userData['last_name'] ?>" name="last_name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Email</label>
-                    <input type="email" value="<?php echo $userData['email'] ?>" name="email" required>
+                    <input type="email" value="<?php echo $userData['email'] ?>" name="email">
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Update Student" name="updateStudent">            
             </form>
         </div>
     </section>
-    <script src="js/dashboard-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

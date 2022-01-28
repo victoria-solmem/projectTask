@@ -1,8 +1,14 @@
 <?php 
 	require_once('db.php');
     $report_user = '';
-    if (isset($_POST['report'])) {
+    $report_unit = '';
+    if (isset($_POST['report-user'])) {
+        $report_unit = '';
         $report_user = mysqli_real_escape_string($con, $_POST['user_id']);
+	}
+    if (isset($_POST['report-unit'])) {
+        $report_user = '';
+        $report_unit = mysqli_real_escape_string($con, $_POST['unit_id']);
 	}
 ?>
 <!DOCTYPE html>
@@ -25,14 +31,18 @@
             <a href="grade-add.php" style="color: white;">
                 Add Grade</a>
         </button>
-        <button class="btn" onclick="showHideFilter()" style="float: right; right: 120px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
-            Pick User
+        <button class="btn" onclick="showHideFilter()" style="float: right; right: 115px; position: absolute; background-color: #2dd36f; margin-top: -48px;">
+            Filter by
         </button>
+        <div>
+            <?php  include("errors.php"); ?><br>
+        </div>
         <div>
             <?php  include("success.php"); ?><br>
         </div>
+
         <!-- PICK USER FORM -->
-        <form id="filter" class="report" method="POST" name="monthlyForm">
+        <form id="filter" class="report" method="POST">
             <select name="user_id">
                 <option value="">Select User</option>
                 <?php 
@@ -45,7 +55,24 @@
                     }
                 ?>
             </select>      
-            <input type="submit" value="See Report" name="report">
+            <input type="submit" value="See Report" name="report-user">
+        </form>
+
+        <!-- PICK UNIT FORM -->
+        <form id="filter-unit" class="report" method="POST">
+            <select name="unit_id">
+                <option value="">Select Unit</option>
+                <?php 
+                    $unitQuery  = "SELECT * FROM unit";
+                    $unitResult = mysqli_query($con, $unitQuery);
+                    while($row  = mysqli_fetch_assoc($unitResult)) {
+                        ?>
+                            <option value="<?php echo $row['unit_id'] ?>"><?php echo $row['unit_code'] ?>: <?php echo $row['unit_name'] ?></option>
+                        <?php
+                    }
+                ?>
+            </select>      
+            <input type="submit" value="See Report" name="report-unit">
         </form>
         <table id="customers">
             <tr>
@@ -63,6 +90,8 @@
             <?php
                 if($report_user) {
                     $gradeQuery = "SELECT * FROM grade WHERE user_id='$report_user'";
+                } elseif($report_unit) {
+                    $gradeQuery = "SELECT * FROM grade WHERE unit_id='$report_unit'";
                 } else {
                     $gradeQuery = "SELECT * FROM grade ORDER BY created_at DESC";
                 }
@@ -143,15 +172,27 @@
     </section>
     <script src="js/dashboard-validation.js"></script>
     <script>
-        // SHOW AND HIDE FILTER
+        // SHOW AND HIDE FILTER BY
         function showHideFilter() {
             var filter = document.getElementById("filter");
+            var filterUnit = document.getElementById("filter-unit");
             if(filter.style.display === "block") {
                 filter.style.display = "none";
             } else {
                 filter.style.display = "block";
             }
+
+            if(filterUnit.style.display === "block") {
+                filterUnit.style.display = "none";
+            } else {
+                filterUnit.style.display = "block";
+            }
         }
     </script>
+    <style>
+        #filter-unit {
+            display: none;
+        }
+    </style>
 </body>
 </html>

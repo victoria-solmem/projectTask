@@ -18,14 +18,14 @@
     </section>
     <section>
         <div class="login">
-            <form method="POST">
+        <form name="addGradeForm" method="POST" onsubmit="return addGradeValidation()" style=" background-color: white;">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Semester</label>
-                    <select name="semester_id" required>
+                    <select name="semester_id" >
                         <option value="">Select Semester</option>
                         <?php 
                             $semesterQuery   = "SELECT * FROM semester";
@@ -41,7 +41,7 @@
 
                 <div style="width: 100%;">
                     <label>User</label>
-                    <select name="user_id" required>
+                    <select name="user_id" >
                         <option value="">Select User</option>
                         <?php 
                             $userQuery  = "SELECT * FROM user";
@@ -57,7 +57,7 @@
 
                 <div style="width: 100%;">
                     <label>Unit</label>
-                    <select name="unit_id" required>
+                    <select name="unit_id" >
                         <option value="">Select Unit</option>
                         <?php 
                             $unitQuery  = "SELECT * FROM unit";
@@ -73,18 +73,18 @@
 
                 <div style="width: 100%;">
                     <label>Cat</label>
-                    <input type="number" name="cat" min="0" max="30" required>
+                    <input type="number" name="cat" min="0" max="30" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Exam</label>
-                    <input type="number" name="exam" min="0" max="70" required>
+                    <input type="number" name="exam" min="0" max="70" >
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Grade" name="addGrade">            
             </form>
         </div>
     </section>
-    <script src="js/dashboard-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

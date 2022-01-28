@@ -62,7 +62,6 @@
         }
         $userQuery  = "DELETE FROM user WHERE user_id='$user_id'";
         $userResult = mysqli_query($con, $userQuery);
-        header('Location: student.php');
         $_SESSION['success'] = "Student updated successfully.";
     }
     // UPDATE USER
@@ -131,7 +130,6 @@
         }
         $userQuery  = "DELETE FROM unit WHERE unit_id='$unit_id'";
         $userResult = mysqli_query($con, $userQuery);
-        header('Location: unit.php');
         $_SESSION['success'] = "Unit updated successfully.";
     }
     //ADD SEMESTER
@@ -182,7 +180,6 @@
         }
         $userQuery  = "DELETE FROM semester WHERE semester_id='$semester_id'";
         $userResult = mysqli_query($con, $userQuery);
-        header('Location: semester.php');
         $_SESSION['success'] = "Semester updated successfully.";
     }
     //ADD GRADE
@@ -231,7 +228,6 @@
         $grade_id = mysqli_real_escape_string($con, $_POST['grade_id']); 
         $gradeQuery  = "DELETE FROM grade WHERE grade_id='$grade_id'";
         mysqli_query($con, $gradeQuery);
-        header('Location: grade.php');
         $_SESSION['success'] = "Grade deleted successfully.";
     }
 

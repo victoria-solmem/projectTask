@@ -13,40 +13,40 @@
 
     <section class="banner">
         <div class="banner-left">
-            Student-add
+           Add Student
         </div>
     </section>
     <section>
         <div class="login">
-            <form method="POST">
+            <form name="addStudentForm" method="POST" onsubmit="return addStudentValidation()" style=" background-color: white;">
                 <div>
                     <?php  include("errors.php"); ?><br>
                 </div>
 
                 <div style="width: 100%;">
                     <label>Registration Number</label>
-                    <input type="text" name="reg_number" required>
+                    <input type="text" name="reg_number" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>First Name</label>
-                    <input type="text" name="first_name" required>
+                    <input type="text" name="first_name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Last Name</label>
-                    <input type="text" name="last_name" required>
+                    <input type="text" name="last_name" >
                 </div><br><br><br><br><br>
 
                 <div style="width: 100%;">
                     <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" >
                 </div><br><br><br><br><br>
                 
                 <input type="submit" value="Add Student" name="addStudent">            
             </form>
         </div>
     </section>
-    <script src="js/dashboard-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
